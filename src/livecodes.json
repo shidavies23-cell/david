@@ -1,0 +1,32 @@
+{
+  "title": "DeepAI Code Snippet",
+  "description": "",
+  "head": "<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />",
+  "htmlAttrs": "lang=\"en\" class=\"\"",
+  "tags": [],
+  "activeEditor": "script",
+  "markup": {
+    "language": "html",
+    "content": ""
+  },
+  "style": {
+    "language": "css",
+    "content": ""
+  },
+  "script": {
+    "language": "python",
+    "content": "import pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# Load the hospital data\nfile_path = 'hospital_data.csv'  # Replace with your file path\ndata = pd.read_csv(file_path)\n\n# Preview the dataset\nprint(\"First few rows of the dataset:\")\nprint(data.head())\n\n# Basic data info\nprint(\"\\nData Info:\")\nprint(data.info())\n\n# Summary statistics\nprint(\"\\nSummary Statistics:\")\nprint(data.describe())\n\n# Example analyses:\n\n# 1. Patient demographics: Age distribution\nif 'Age' in data.columns:\n    plt.figure(figsize=(8, 6))\n    sns.histplot(data['Age'], bins=20, kde=True)\n    plt.title('Age Distribution of Patients')\n    plt.xlabel('Age')\n    plt.ylabel('Number of Patients')\n    plt.show()\n\n# 2. Gender distribution\nif 'Gender' in data.columns:\n    gender_counts = data['Gender'].value_counts()\n    plt.figure(figsize=(6, 4))\n    sns.barplot(x=gender_counts.index, y=gender_counts.values)\n    plt.title('Gender Distribution')\n    plt.xlabel('Gender')\n    plt.ylabel('Number of Patients')\n    plt.show()\n\n# 3. Common diagnoses\nif 'Diagnosis' in data.columns:\n    top_diagnoses = data['Diagnosis'].value_counts().head(10)\n    plt.figure(figsize=(10, 6))\n    sns.barplot(x=top_diagnoses.values, y=top_diagnoses.index)\n    plt.title('Top 10 Diagnoses')\n    plt.xlabel('Number of Cases')\n    plt.ylabel('Diagnosis')\n    plt.show()\n\n# 4. Length of stay analysis\nif 'Length_of_Stay' in data.columns:\n    plt.figure(figsize=(8, 6))\n    sns.histplot(data['Length_of_Stay'], bins=30)\n    plt.title('Distribution of Length of Stay')\n    plt.xlabel('Days')\n    plt.ylabel('Number of Patients')\n    plt.show()\n\n# 5. Readmission rates (assuming a 'Readmitted' column with yes/no)\nif 'Readmitted' in data.columns:\n    readmission_counts = data['Readmitted'].value_counts()\n    plt.figure(figsize=(6, 4))\n    sns.barplot(x=readmission_counts.index, y=readmission_counts.values)\n    plt.title('Readmission Rates')\n    plt.xlabel('Readmitted')\n    plt.ylabel('Number of Patients')\n    plt.show()\n\n# Add more analyses as needed based on available data columns"
+  },
+  "stylesheets": [],
+  "scripts": [],
+  "cssPreset": "",
+  "processors": [],
+  "customSettings": {},
+  "imports": {},
+  "types": {},
+  "tests": {
+    "language": "typescript",
+    "content": ""
+  },
+  "version": "46"
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class=""><head><script>window.livecodes = window.livecodes || {};</script><title>DeepAI Code Snippet</title><meta name="title" content="DeepAI Code Snippet"><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><style id="__livecodes_styles__"></style><script src="https://cdn.jsdelivr.net/npm/brython@3.12.4/brython.min.js"></script><script src="https://cdn.jsdelivr.net/npm/brython@3.12.4/brython_stdlib.js"></script><script src="https://cdn.jsdelivr.net/npm/es-module-shims@1.10.0/dist/es-module-shims.js" async=""></script><script type="importmap">{
+  "imports": {}
+}</script></head><body><script type="text/python">import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the hospital data
+file_path = 'hospital_data.csv'  # Replace with your file path
+data = pd.read_csv(file_path)
+
+# Preview the dataset
+print("First few rows of the dataset:")
+print(data.head())
+
+# Basic data info
+print("\nData Info:")
+print(data.info())
+
+# Summary statistics
+print("\nSummary Statistics:")
+print(data.describe())
+
+# Example analyses:
+
+# 1. Patient demographics: Age distribution
+if 'Age' in data.columns:
+    plt.figure(figsize=(8, 6))
+    sns.histplot(data['Age'], bins=20, kde=True)
+    plt.title('Age Distribution of Patients')
+    plt.xlabel('Age')
+    plt.ylabel('Number of Patients')
+    plt.show()
+
+# 2. Gender distribution
+if 'Gender' in data.columns:
+    gender_counts = data['Gender'].value_counts()
+    plt.figure(figsize=(6, 4))
+    sns.barplot(x=gender_counts.index, y=gender_counts.values)
+    plt.title('Gender Distribution')
+    plt.xlabel('Gender')
+    plt.ylabel('Number of Patients')
+    plt.show()
+
+# 3. Common diagnoses
+if 'Diagnosis' in data.columns:
+    top_diagnoses = data['Diagnosis'].value_counts().head(10)
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x=top_diagnoses.values, y=top_diagnoses.index)
+    plt.title('Top 10 Diagnoses')
+    plt.xlabel('Number of Cases')
+    plt.ylabel('Diagnosis')
+    plt.show()
+
+# 4. Length of stay analysis
+if 'Length_of_Stay' in data.columns:
+    plt.figure(figsize=(8, 6))
+    sns.histplot(data['Length_of_Stay'], bins=30)
+    plt.title('Distribution of Length of Stay')
+    plt.xlabel('Days')
+    plt.ylabel('Number of Patients')
+    plt.show()
+
+# 5. Readmission rates (assuming a 'Readmitted' column with yes/no)
+if 'Readmitted' in data.columns:
+    readmission_counts = data['Readmitted'].value_counts()
+    plt.figure(figsize=(6, 4))
+    sns.barplot(x=readmission_counts.index, y=readmission_counts.values)
+    plt.title('Readmission Rates')
+    plt.xlabel('Readmitted')
+    plt.ylabel('Number of Patients')
+    plt.show()
+
+# Add more analyses as needed based on available data columns</script></body></html>
